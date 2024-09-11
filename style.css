@@ -1,0 +1,210 @@
+/* Allgemeine Einstellungen */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #181818;
+    color: #f4f4f4;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+header nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00c8c8;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header ul li {
+    margin-left: 20px;
+}
+
+header ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header ul li a:hover {
+    color: #00ffcc;
+}
+
+/* Hero Section */
+#hero {
+    background-color: #1e1e1e;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background.jpg');
+    background-size: cover;
+}
+
+#hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 18px;
+}
+
+/* Über mich Section */
+#about {
+    background-color: #2b2b2b;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 30px;
+    color: #00ffcc;
+    margin-bottom: 40px;
+}
+
+.about-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.about-content img {
+    border-radius: 50%;
+    width: 150px;
+    margin-right: 30px;
+}
+
+.about-text {
+    max-width: 800px;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+}
+
+.about-text a {
+    color: #00c8c8;
+    text-decoration: none;
+}
+
+.about-text a:hover {
+    text-decoration: underline;
+}
+
+/* Projekte Section */
+#projects {
+    background-color: #181818;
+    padding: 60px 20px;
+}
+
+#projects h2 {
+    font-size: 30px;
+    color: #00ffcc;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.project {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: #2b2b2b;
+}
+
+.project h3 {
+    font-size: 24px;
+    color: #00c8c8;
+    margin-bottom: 10px;
+}
+
+.project p {
+    margin-bottom: 10px;
+}
+
+.project a {
+    color: #00c8c8;
+    text-decoration: none;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+/* Kontakt Section */
+#contact {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#contact a {
+    color: #00ffcc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#contact a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #121212;
+    color: #dcdcdc;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+/* Responsives Design */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-content img {
+        margin: 0 auto 20px;
+    }
+
+    header nav {
+        flex-direction: column;
+    }
+}
