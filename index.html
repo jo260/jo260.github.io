@@ -1,1 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>DIPCalc - DIP-Schalter Rechner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #fff;
+      min-height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    .switches {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .switch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .switch:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.2);
+    }
+    .switch input[type="checkbox"] {
+      transform: scale(1.5);
+      margin-top: 10px;
+    }
+    .result {
+      font-size: 1.2em;
+      margin: 10px 0;
+      text-align: center;
+      background: rgba(0,0,0,0.2);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .input-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    input[type="number"] {
+      width: 100px;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      text-align: center;
+      font-size: 1em;
+    }
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 5px;
+      background: #fff;
+      color: #0078ff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1em;
+    }
+    button:hover {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚡ DIPCalc - DIP-Schalter Rechner ⚡</h1>
+
+  <div class="switches">
+    <div class="switch"><label>1<br><input type="checkbox" data-value="1"></label></div>
+    <div class="switch"><label>2<br><input type="checkbox" data-value="2"></label></div>
+    <div class="switch"><label>3<br><input type="checkbox" data-value="4"></label></div>
+    <div class="switch"><label>4<br><input type="checkbox" data-value="8"></label></div>
+    <div class="switch"><label>5<br><input type="checkbox" data-value="16"></label></div>
+    <div class="switch"><label>6<br><input type="checkbox" data-value="32"></label></div>
+  </div>
+
+  <div class="result">Adresse: <span id="address">0</span></div>
+  <div class="result">Binär: <span id="binary">000000</span></div>
+
+  <div class="input-container">
+    <label for="inputAddress">Adresse eingeben:</label>
+    <input type="number" id="inputAddress" min="0" max="63"> 
+    <button id="setAddress">Setzen</button>
+  </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const addressSpan = document.getElementById('address');
+    const binarySpan = document.getElementById('binary');
+    const inputAddress = document.getElementById('inputAddress');
+    const setAddressBtn = document.getElementById('setAddress');
+
+    function updateAddress() {
+      let sum = 0;
+      let bits = "";
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          sum += parseInt(cb.dataset.value);
+          bits = "1" + bits;
+        } else {
+          bits = "0" + bits;
+        }
+      });
+      addressSpan.textContent = sum;
+      binarySpan.textContent = bits;
+      inputAddress.value = sum;
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateAddress));
+
+    setAddressBtn.addEventListener('click', () => {
+      let value = parseInt(inputAddress.value);
+      if (isNaN(value) || value < 0 || value > 63) return;
+      checkboxes.forEach(cb => cb.checked = false);
+      checkboxes.forEach(cb => {
+        let v = parseInt(cb.dataset.value);
+        if ((value & v) !== 0) cb.checked = true;
+      });
+      updateAddress();
+    });
+
+    // Initial anzeigen
+    updateAddress();
+  </script>
+</body>
+</html>
+
 
